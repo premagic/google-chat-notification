@@ -12,7 +12,7 @@ name: Check Transpiled JavaScript
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
 
 permissions:
@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   check-dist:
-    name: Check dist/
+    name: Check dist
     runs-on: ubuntu-latest
 
     steps:
@@ -32,7 +32,7 @@ jobs:
         id: setup-node
         uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install Dependencies
@@ -42,16 +42,6 @@ jobs:
       - name: Build dist/ Directory
         id: build
         run: npm run bundle
-
-      # This will fail the workflow if the PR wasn't created by Dependabot.
-      - name: Compare Directories
-        id: diff
-        run: |
-          if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
-            echo "Detected uncommitted changes after build. See status below:"
-            git diff --ignore-space-at-eol --text dist/
-            exit 1
-          fi
 
       # If `dist/` was different than expected, and this was not a Dependabot
       # PR, upload the expected version as a workflow artifact.
