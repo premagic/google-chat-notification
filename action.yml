@@ -1,18 +1,23 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'google-chat-notification'
+description: 'Google chat notification from your github action'
+author: 'premagic'
 
 # Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: 'heart'
-  color: 'red'
+  icon: 'bell'
+  color: 'green'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  name:
+    description: 'Name of the job'
     required: true
-    default: '1000'
+  url:
+    description: 'Webhook url'
+    required: true
+  status:
+    description: 'Status'
+    required: true
 
 # Define your outputs here.
 outputs:
