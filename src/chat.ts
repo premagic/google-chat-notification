@@ -3,9 +3,9 @@ import * as axios from 'axios';
 import { Status } from './status';
 
 const statusColorPalette: { [key in Status]: string } = {
-  success: "#2cbe4e",
-  cancelled: "#ffc107",
-  failure: "#ff0000"
+  success: "#13cf94",
+  cancelled: "#ffbf00",
+  failure: "#881f2e"
 };
 
 const statusText: { [key in Status]: string } = {

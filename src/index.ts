@@ -2,7 +2,7 @@ import * as core from '@actions/core';
 import * as JobStatus from './status';
 import * as GoogleChat from './chat';
 
-async function run() {
+export async function run() {
   try {
     const name = core.getInput('name', { required: true });
     const url = core.getInput('url', { required: true });
